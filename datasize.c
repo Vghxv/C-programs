@@ -6,6 +6,6 @@ int main(){
     printf("Size of int j:%d\n",sizeof(j));
 
     printf("%d\n",i);
-    printf("%d\n",i);
+    printf("%d\n",j);
     return 0;
 }

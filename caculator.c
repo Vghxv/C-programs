@@ -5,7 +5,7 @@ int main(){
     double b=0;
     double ans=0;
     printf("caculator on\n");
-    scanf("%lf %c %lf",&a,&op,&b);
+    scanf("%lf%c%lf",&a,&op,&b);
     switch(op){
         case '+':
             ans=a+b;
@@ -22,7 +22,7 @@ int main(){
         default:
             printf("incorrect input");
             break;
-        
+
     }
     printf("%.3lf",ans);
 
