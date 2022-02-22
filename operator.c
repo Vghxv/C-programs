@@ -1,7 +1,10 @@
 #include<stdio.h>
 int main(){
-    int a=7,b=6,c,d;
-    c=a++ + ++b;///14
+    int a=7;
+    int b=6;
+    int c=0;
+    int d=0;
+    c=a++ + ++b;//14
     d=a-- - --b;//2
     printf("%d\n",c);
     printf("%d",d);
