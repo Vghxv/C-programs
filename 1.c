@@ -15,5 +15,6 @@ int main(){
     x2 = ((-b) + D )/(2 * a);
     printf("%.1lf\n", x1);
     printf("%.1lf", x2);
+
     return 0;
 }

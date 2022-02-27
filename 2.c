@@ -1,5 +1,4 @@
 #include <stdio.h>
-void f() {}
 int main(){
     int i;
     int state=0;
@@ -14,10 +13,9 @@ int main(){
         else if(input=='1')state=(state<<1)|(1);
         else if(input=='2')state=(state<<2)|(1<<1);
         else if(input=='3')state=(state<<3)|(1<<2);
-        else f();
+        else state=0;
         state=state&7;
     }
-
     printf("%d\n", state&1);
     printf("%d\n", (state>>1)&1);
     printf("%d", (state>>2)&1);
