@@ -12,19 +12,13 @@ int main(){
     scanf("%d",&lesson1);
     scanf("%d",&hour1);
     for(j=0;j<hour1;++j)scanf("%d",&ar1[j]);
-
-
     scanf("%d",&lesson2);
     scanf("%d",&hour2);
     for(j=0;j<hour2;++j)scanf("%d",&ar2[j]);
-
-
     scanf("%d",&lesson3);
     scanf("%d",&hour3);
     for(j=0;j<hour3;++j)scanf("%d",&ar3[j]);
 
-    /*printf("%d%d%d",ar2[0],ar2[1],ar2[2]);
-    printf("%d%d%d",ar3[0],ar3[1],ar3[2]);*/
     for (i = 0; i <= hour1;i++){
         for (j = 0; j <= hour2;j++){
             if(ar1[i]==ar2[j]&&ar1[i]!=-1){
@@ -42,6 +36,7 @@ int main(){
                 }
             }
         }
+        if(flag==0)break;
     }
     if(flag==1){
         for (i = 0; i <= hour2;i++){
