@@ -1,23 +1,35 @@
 #include<stdio.h>
-struct Node{
-    int val;
-    int *next;
+typedef struct lesson lesson;
+struct lesson{
+    char *name;
+    int h;
+    int arr[3];
 };
-int main(){
-    struct Node n1;
-    struct Node n2;
-    int tmp=0;
-    scanf("%d", tmp);
-    n1.val=tmp;
-    //getchar();
-    printf("-------");
-    scanf("%d",tmp);
-    n2.val=tmp;
-    n1.next=&n2.val;
-    //getchar();
 
-    printf("values : %d%d",n1.val,n2.val);
-    printf("pointer : %d",n1.next);
-    printf("%d",&n2.val);
+int main(){
+    int i;
+    int j;
+
+    char namet[5];
+    int ht;
+    int arrt[3]={};
+
+    for(i=0;i<1;i++){
+        scanf("%s",namet);
+        scanf("%d*c",&ht);
+        for(j=0;j<ht;j++){
+            scanf("%d*c",&arrt[j]);
+        }
+    }
+
+    lesson L1={
+        .name = namet,
+        .h = ht,
+        .arr = {arrt[0],arrt[1],arrt[2]}
+    };
+
+    //printf("%s\n%d\n%d %d %d",namet,ht,arrt[0],arrt[1],arrt[2]);
+    printf("%s\n",namet);
+    printf("%s\n%d\n%d %d %d",L1.name,L1.h,L1.arr[0],L1.arr[1],L1.arr[2]);
     return 0;
 }
