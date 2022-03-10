@@ -1,7 +1,7 @@
 #include<stdio.h>
 typedef struct lesson lesson;
 struct lesson{
-    char *name;
+    int name;
     int h;
     int arr[3];
 };
@@ -10,7 +10,7 @@ int main(){
     int i;
     int j;
 
-    char namet[5];
+    int namet[5];
     int ht;
     int arrt[3]={};
 

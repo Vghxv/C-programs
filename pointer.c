@@ -1,11 +1,10 @@
 #include<stdio.h>
 int main(){
-    int i=0;
-    int *ptr;
-    ptr=&i;
-    *ptr=100;
-    printf("The \"ptr\" value is %d\n",*ptr);
-    printf("The \"ptr\" points to %u\n",ptr);
+
+    int i,j=21,*p=&j,*q=p;
+    printf("%d %d\n",*p,*q);
+    for (i=0;i<4; i++)*(p++);
+    (*q)++;
+    printf("%d %d %d",*p,*q,i);
     return 0;
 }
-
