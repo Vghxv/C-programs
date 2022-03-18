@@ -6,7 +6,7 @@ int main(){
     int fu1, fd1, fu2, fd2, resgcf;
     int res, resu=0, resd=0;
     char op;
-    char yn='y';
+    char yn = 'y';
     int nega;
     int tmp;
     while(yn!='n'){
@@ -38,10 +38,8 @@ int main(){
                     resd = fd1 *fd2;
                     break;
             }
-            //printf("%d/%d",resu,resd);
             resgcf = gcf(resu,resd);
             resu /= resgcf; resd /= resgcf;
-            //printf("%d %d\n", resu, resd);
             if(resu == 0){
                 printf("0\n");
             }
@@ -67,8 +65,6 @@ int main(){
                 }
             }
         }
-        //fu1=fd1=fu2=fd2=resgcf=resu=resd=0;
-        //res=-1;
     }
     return 0;
 }
