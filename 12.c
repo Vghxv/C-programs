@@ -11,7 +11,7 @@ int main(){
     int tmp;
     while(yn!='n'){
         nega = 0;
-        res=-1;
+        res = 0;
         scanf("%d/%d", &fu1, &fd1);
         scanf("%d/%d", &fu2, &fd2);
         scanf(" %c", &op);
@@ -57,14 +57,18 @@ int main(){
                     resu%=resd;
                 }
                 if(nega==1)printf("-");
-                if(res == -1){
-                    printf("%d/%d\n",resu,resd);
+                if(res == 0){
+                    if(resd==1)printf("1\n");
+                    else printf("%d/%d\n",resu,resd);
                 }
+
                 else{
-                    printf("%d(%d/%d)\n",res,resu,resd);
+                    if(resd==1)printf("%d\n",res);
+                    else printf("%d(%d/%d)\n",res,resu,resd);
                 }
             }
         }
+        //printf("-----------------------------\n");
     }
     return 0;
 }
