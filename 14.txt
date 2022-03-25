@@ -1,0 +1,296 @@
+014
+1A2B遊戲
+
+小明和小萱在玩猜數字遊戲，
+由小明先輸入四個數字為謎底(數字不重複，0可置於首位)，
+小萱輸入想要猜的四個數字(數字不重複)。
+若猜中數字則遊戲結束並輸出win
+若猜錯則顯示XAYB（X表示位置和數字皆正確的個數，而Y表示數字正確而位置不對的個數）
+遊戲最多猜六次，若6次後仍未猜對則遊戲結束(最後一次仍需顯示XAXB)
+=================
+範例輸入說明：
+1234
+5678
+5178
+1578
+1478
+1724
+1234
+
+範例輸出說明：
+0A0B (皆未符合)
+0A1B (1為B)
+1A0B (1為A)
+1A1A (1為A，4為B)
+2A1B (1、4為A，2為B)
+win
+=================
+sample input 1：
+0936
+0936
+
+sample output 1：
+win
+=================
+sample input 2：
+1953
+4270
+1953
+
+sample output 2：
+0A0B
+win
+=================
+sample input 3：
+1953
+9315
+1953
+
+sample output 3：
+0A4B
+win
+=================
+sample input 4：
+1953
+1359
+1953
+
+sample output 4：
+2A2B
+win
+=================
+sample input 5：
+0192
+1029
+1920
+0192
+
+sample output 5：
+0A4B
+0A4B
+win
+=================
+sample input 6：
+0192
+0129
+0912
+0192
+
+sample output 6：
+2A2B
+2A2B
+win
+=================
+sample input 7：
+0192
+8324
+4027
+0192
+
+sample output 7：
+0A1B
+0A2B
+win
+=================
+sample input 8：
+1324
+3142
+3241
+4132
+1324
+
+sample output 8：
+0A4B
+0A4B
+0A4B
+win
+=================
+sample input 9：
+1324
+1423
+1234
+2314
+1324
+
+sample output 9：
+2A2B
+2A2B
+2A2B
+win
+=================
+sample input 10：
+1324
+7132
+1790
+0349
+1324
+
+sample output 10：
+0A3B
+1A0B
+1A1B
+win
+=================
+sample input 11：
+9870
+7098
+0987
+8709
+7908
+9870
+
+sample output 11：
+0A4B
+0A4B
+0A4B
+0A4B
+win
+=================
+sample input 12：
+9870
+9807
+8970
+9078
+0879
+9870
+
+sample output 12：
+2A2B
+2A2B
+2A2B
+2A2B
+win
+=================
+sample input 13：
+9870
+7806
+9708
+9812
+9074
+9870
+
+sample output 13：
+1A2B
+1A3B
+2A0B
+2A1B
+win
+=================
+sample input 14：
+5620
+2056
+2506
+6205
+6502
+0265
+5620
+
+sample output 14：
+0A4B
+0A4B
+0A4B
+0A4B
+0A4B
+win
+=================
+sample input 15：
+5620
+5602
+6520
+0625
+5260
+2650
+5620
+
+sample output 15：
+2A2B
+2A2B
+2A2B
+2A2B
+2A2B
+win
+=================
+sample input 16：
+5620
+0562
+5629
+1348
+5026
+9173
+5620
+
+sample output 16：
+0A4B
+3A0B
+0A0B
+2A2B
+0A0B
+win
+=================
+sample input 17：
+0987
+9078
+7098
+8709
+9870
+8709
+7890
+
+sample output 17：
+0A4B
+0A4B
+0A4B
+0A4B
+0A4B
+0A4B
+=================
+sample input 18：
+0987
+0978
+0789
+0897
+7980
+8907
+9087
+
+sample output 18：
+2A2B
+2A2B
+2A2B
+2A2B
+2A2B
+2A2B
+=================
+sample input 19：
+0987
+0897
+9708
+0789
+1079
+8907
+7650
+
+sample output 19：
+2A2B
+0A4B
+2A2B
+0A3B
+2A2B
+0A2B
+=================
+sample input 20：
+0987
+7980
+0912
+0795
+6931
+8079
+1094
+
+sample output 20：
+2A2B
+2A0B
+1A2B
+1A0B
+0A4B
+0A2B
