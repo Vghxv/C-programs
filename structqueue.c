@@ -20,6 +20,5 @@ void pop(struct queue* n,int value){
 	free(t);
 }
 int main(){
-	
     return 0;
 }
