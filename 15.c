@@ -17,18 +17,20 @@ void reverse(int *arr){
 int flen(int *arr){
     int len;
     for(len=BSIZE-1;len>0;len--){
-        if(*(arr+len)!=0)break;
+        if(*(arr+len)!=-1)break;
     }
     return len+1;
+
 }
 
 int max(int a,int b){return (a>b)?a:b;}
 
 void print(int *arr){
     int i;
-    for(i=0;i<flen(arr);i++){
+    for(i=0;i<50;i++){
         printf("%d",*(arr+i));
     }
+    printf("\n");
 }
 
 void input(int *arr){
@@ -41,19 +43,22 @@ void input(int *arr){
     for(i=0;i<tL;i++){
         arr[i] = t[i]-'0';
     }
-    reverse(arr);
+
 }
 
 void add(int *arr1,int *arr2,int *ans){
     int i;
     int carry = 0;
     int len = max(flen(arr1),flen(arr2));
+    //printf("%d%d\n",flen(arr1),flen(arr2));
     for(i=0;i<=len;i++){
+
         ans[i] = arr1[i] + arr2[i] + carry;
         carry = ans[i] / 10;
         ans[i] %= 10 ;
     }
-    reverse(ans);
+
+
 }
 void sub(int *arr1,int *arr2,int *ans){
     int i;
@@ -67,19 +72,23 @@ void sub(int *arr1,int *arr2,int *ans){
             ans[i] = arr1[i] - arr2[i];
         }
     }
-    reverse(ans);
+
 }
 int main(){
     int arr1[BSIZE],arr2[BSIZE],ans[BSIZE];
     int i;
 
-    memset(arr1,0,sizeof(arr1));
-    memset(arr2,0,sizeof(arr2));
-    memset(ans,0,sizeof(ans));
+    memset(arr1,-1,sizeof(arr1));
+    memset(arr2,-1,sizeof(arr2));
+    memset(ans,-1,sizeof(ans));
     input(arr1);
     input(arr2);
-    //add(arr1,arr2,ans);
-    sub(arr1,arr2,ans);
+    reverse(arr1);
+    reverse(arr2);
+    add(arr1,arr2,ans);
+    //print(arr1);
+    //print(arr2);
+    //sub(arr1,arr2,ans);
     print(ans);
 
 

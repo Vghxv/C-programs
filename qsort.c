@@ -49,7 +49,9 @@ int main(){
     inputarr(arr,size);
     qs(arr,0,size-1);
     printarr(arr,size);
+    free(arr);
     return 0;
+
 }
 //7 5 3 9 1 0 2 4 6 8
 //12 34 56 78 91 23 45 6 78 9
