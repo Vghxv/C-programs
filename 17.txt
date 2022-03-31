@@ -1,0 +1,106 @@
+017 進位制轉換
+
+將無號2進制數字轉換為7進制
+=================
+輸入說明：
+輸入一行最多15bit的無號數字
+
+輸出說明：
+若數字為2進制，則將數字轉換為7進制並輸出
+若數字不為2進制，則輸出ERROR
+=================
+範例輸入說明：
+11111 (此為10進制的31)
+
+範例輸出說明：
+43 (7^1*4 + 7^0*3 = 31)
+=================
+sample input 1：
+0
+
+sample output 1：
+0
+=================
+sample input 2：
+1
+
+sample output 2：
+1
+=================
+sample input 3：
+100000000000000
+
+sample output 3：
+65524
+=================
+sample input 4：
+111111111111111
+
+sample output 4：
+164350
+=================
+sample input 5：
+2
+
+sample output 5：
+ERROR
+=================
+sample input 6：
+111111111161111
+
+sample output 6：
+ERROR
+=================
+sample input 7：
+222222222222222
+
+sample output 7：
+ERROR
+=================
+sample input 8：
+938572389573256
+
+sample output 8：
+ERROR
+=================
+sample input 9：
+101010101010
+
+sample output 9：
+10650
+=================
+sample input 10：
+100000010001100
+
+sample output 10：
+66114
+=================
+sample input 11：
+111111011011101
+
+sample output 11：
+163454
+=================
+sample input 12：
+100110011001100
+
+sample output 12：
+111214
+=================
+sample input 13：
+100000110100111
+
+sample output 13：
+100000
+=================
+sample input 14：
+100110010011000
+
+sample output 14：
+111111
+=================
+sample input 15：
+100000110100110
+
+sample output 15：
+66666
