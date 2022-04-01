@@ -1,119 +1,96 @@
 #include<stdio.h>
-#include<stdlib.h>
 #include<string.h>
-#define BSIZE 80
+#define BSIZE 100
 void input(int *arr){
     char t[BSIZE];
-    int tL;
     int i;
     memset(t,0,sizeof(t));
     scanf("%s",t);
-    tL = strlen(t);
-    for(i=tL-1;i>-1;i--){
-        arr[i] = t[i]-'0';
-    }
+    for(i=0;i<strlen(t);i++)arr[i] = t[strlen(t)-i-1]-'0';
 }
 void print(int *arr){
     int i=BSIZE-1;
-    int is_0=0;
-    while(arr[i]==0){
-        i--;
-    }
-    while(i>-1){
-        printf("%d",*(arr+i));
-    }
+	while(arr[i]==0){
+		i--;
+		if(i==-1){
+			printf("0");
+			break;
+		}
+	}
+    while(i>-1)printf("%d",*(arr+i--));
     printf("\n");
 }
 void add(int *arr1,int *arr2,int *ans){
-    int i;
-    int carry=0;
-    int len = max(flen(arr1),flen(arr2));
-    for(i=0;i<=len;i++){
-        if(i==len){
-            ans[i] = carry;
-        }
-        else{
-            if(arr2[i]==-1){
-                ans[i] = arr1[i] + carry;
-            }
-            else{
-                ans[i] = arr1[i] + arr2[i] + carry;
-            }
-            carry = ans[i] / 10;
-            ans[i] %= 10 ;
-        }
+    int i,carry=0,tmp;
+    for(i=0;i<BSIZE;i++){
+        tmp = arr1[i] + arr2[i] + carry;
+		ans[i] = tmp%10;
+        carry = tmp/10;
     }
-    ans[i]=-1;
 }
 void sub(int *arr1,int *arr2,int *ans){
-    int i;
-    int len = max(flen(arr1),flen(arr2));
-    for(i=0;i<len;i++){
-        if(arr2[i]==-1)arr2[i]=0;
-        if(arr1[i]<arr2[i]){
-            arr1[i+1]--;
-            ans[i] = 10 + arr1[i] - arr2[i];
-        }
-        else{
-            ans[i] = arr1[i] - arr2[i];
-        }
+    int i,borrow=0;
+    for(i=0;i<BSIZE;i++){
+		ans[i] = arr1[i] - arr2[i] - borrow;
+		if(ans[i]<0){
+			ans[i]+=10;
+			borrow=1;
+		}
+		else{
+			borrow=0;
+		}
     }
-    ans[i]=-1;
 }
-
 void mul(int *arr1,int *arr2,int *ans){
-    int i,j,k;
-    int carry=0;
-    int tmp[BSIZE];
-    for(j=0;j<flen(arr2);j++){
-        memset(tmp,0,sizeof(tmp));
-        for(i=0;i<flen(arr1);i++){
-            tmp[i+j]=arr1[i]*arr2[j]+carry;
-            carry = tmp[i+j]/10;
-            tmp[i+j]%=10;
+    int i,j;
+    int carry=0,tmp;
+	for(i=0;i<BSIZE;i++){
+        carry=0;
+		for(j=0;j<BSIZE;j++){
+			tmp = arr1[i]*arr2[j]+ans[i+j]+carry;
+			carry = tmp/10;
+            ans[i+j] = tmp%10;
         }
-        tmp[i+j]=-1;
-		print(tmp);
-        for(k=0;k<flen(tmp);k++){
-            ans[k]+=tmp[k];
-        }
-    }
-    ans[k]=-1;
-    for(k=0;k<flen(ans);k++){
-        ans[k]+=carry;
-        carry=ans[k]/10;
-        ans[k]%=10;
-    }
-    ans[k]=-1;
+        //print(ans);
+	}
 }
-
+int jgsize(int *arr1,int *arr2){
+	int i=BSIZE-1,j=BSIZE-1;
+	while(arr1[i]==0)i--;
+	while(arr2[j]==0)j--;
+	if(i<j){
+		return 1;
+	}
+	while(i==j&&i>-1){
+		if(arr1[i]<arr2[j])return 1;
+		i--;
+		j--;
+	}
+	return 0;
+}
 int main(){
-    int arr1[BSIZE],arr2[BSIZE],ans[BSIZE];
-    int i;
+    int arr1[BSIZE],arr2[BSIZE],ans[2*BSIZE],cmdi;
     memset(arr1,0,sizeof(arr1));
     memset(arr2,0,sizeof(arr2));
     memset(ans,0,sizeof(ans));
-    input(arr1);
-    input(arr2);
-    //reverse(arr1);
-    //reverse(arr2);
-    //cmpnum(arr1,arr2);
-    //int *tp;
-    //int L1 = flen(arr1);
-    //int L2 = flen(arr2);
-    //if(L1<L2||(L1==L2&&*(arr1+L1-1)<*(arr2+L2-1))){
-    //tp=arr1;
-    //arr1=arr2;
-    //arr2=tp;
-    //}
-    //add(arr1,arr2,ans);
+    void(*func[])(int*,int*,int*) = {add,sub,mul};
+	//add(arr1,arr2,ans);
     //sub(arr1,arr2,ans);
-    print(arr1);
-    print(arr2);
     //mul(arr1,arr2,ans);
-    //mul(arr1,arr2,ans);
-    //reverse(ans);
-    //print(ans);
+	cmdi = getchar()-49;
+	getchar();
+    input(arr1);
+	input(arr2);
+    //print(arr1);
+    //print(arr2);
+    if(jgsize(arr1,arr2)){
+		func[cmdi](arr2,arr1,ans);
+		if(cmdi==1)printf("-");
+	}
+	else{
+		func[cmdi](arr1,arr2,ans);
+	}
+	print(ans);
     return 0;
 }
 
