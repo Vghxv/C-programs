@@ -21,7 +21,8 @@ void print(int *arr){
     printf("\n");
 }
 void add(int *arr1,int *arr2,int *ans){
-    int i,carry=0,tmp;
+    int i,tmp;
+	int carry=0;
     for(i=0;i<BSIZE;i++){
         tmp = arr1[i] + arr2[i] + carry;
 		ans[i] = tmp%10;
@@ -51,16 +52,13 @@ void mul(int *arr1,int *arr2,int *ans){
 			carry = tmp/10;
             ans[i+j] = tmp%10;
         }
-        //print(ans);
 	}
 }
 int jgsize(int *arr1,int *arr2){
 	int i=BSIZE-1,j=BSIZE-1;
 	while(arr1[i]==0)i--;
 	while(arr2[j]==0)j--;
-	if(i<j){
-		return 1;
-	}
+	if(i<j)return 1;
 	while(i==j&&i>-1){
 		if(arr1[i]<arr2[j])return 1;
 		i--;
@@ -74,15 +72,10 @@ int main(){
     memset(arr2,0,sizeof(arr2));
     memset(ans,0,sizeof(ans));
     void(*func[])(int*,int*,int*) = {add,sub,mul};
-	//add(arr1,arr2,ans);
-    //sub(arr1,arr2,ans);
-    //mul(arr1,arr2,ans);
-	cmdi = getchar()-49;
+	cmdi = getchar()-'1';
 	getchar();
     input(arr1);
 	input(arr2);
-    //print(arr1);
-    //print(arr2);
     if(jgsize(arr1,arr2)){
 		func[cmdi](arr2,arr1,ans);
 		if(cmdi==1)printf("-");
