@@ -1,6 +1,37 @@
 #include<stdio.h>
 #include<string.h>
 #define BSIZE 100
+void input(int *arr);
+void print(int *arr);
+int jgsize(int *arr1,int *arr2);
+void add(int *arr1,int *arr2,int *ans);
+void sub(int *arr1,int *arr2,int *ans);
+void mul(int *arr1,int *arr2,int *ans);
+void get_dividend(int *arr,int *devidend,int i,int j);
+void div(int *arr1,int *arr2,int *ans);
+int main(){
+    int arr1[BSIZE],arr2[BSIZE],ans[2*BSIZE];
+    memset(arr1,0,sizeof(arr1));
+    memset(arr2,0,sizeof(arr2));
+    memset(ans,0,sizeof(ans));
+    input(arr1);
+	input(arr2);
+	div(arr1,arr2,ans);
+	//print(ans);
+    return 0;
+}
+void div(int *arr1,int *arr2,int *ans){
+	int dividend[BSIZE];
+    int i=BSIZE-1,j=BSIZE-1;
+	memset(dividend,0,sizeof(dividend));
+    while(arr1[i]==0)i--;i++;
+    while(arr2[j]==0)j--;j++;
+    get_dividend(arr1,dividend,i-j,i);
+
+//    print(dividend);
+
+}
+
 void input(int *arr){
     char t[BSIZE];
     int i;
@@ -66,23 +97,9 @@ int jgsize(int *arr1,int *arr2){
 	}
 	return 0;
 }
-
-void div(int *arr1,int *arr2,int *ans){
-	int dividend[BSIZE],divisor[BSIZE];
-	memset(dividend,0,sizeof(dividend));
-	memset(divisor,0,sizeof(divisor));
-	
-}
-int main(){
-    int arr1[BSIZE],arr2[BSIZE],ans[2*BSIZE];
-    memset(arr1,0,sizeof(arr1));
-    memset(arr2,0,sizeof(arr2));
-    memset(ans,0,sizeof(ans));
-    input(arr1);
-	input(arr2);
-	div(arr1,arr2,ans);
-	print(ans);
-    return 0;
+void get_dividend(int *arr,int *devidend,int i,int j){
+    int k1=0,k2=i;
+    while(k2<j)devidend[k1++]=arr[k2++];
 }
 
 

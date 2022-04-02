@@ -36,8 +36,8 @@ int main(){
 			dnum+=(bin[blen-i-1]-'0')*pow(2,i);
 		}
 		i=0;
-		//printf("%d",dnum);
-		while(pow(7,i)<dnum)i++;
+		//printf("%d\n",dnum);
+		while(pow(7,i)<=dnum)i++;
 		i--;
 		for(j=0;j<BSIZE&&i>=0;j++){
 			divisor = pow(7,i);
@@ -48,11 +48,11 @@ int main(){
 		for(k=0;k<j;k++){
 			printf("%c",ans[k]);
 		}
-		
+
 	}
 	else{
 		printf("ERROR");
 	}
-	
+
 	return 0;
 }

@@ -1,6 +1,34 @@
 #include<stdio.h>
 #include<string.h>
 #define BSIZE 100
+void input(int *arr);
+void print(int *arr);
+int jgsize(int *arr1,int *arr2);
+void add(int *arr1,int *arr2,int *ans);
+void sub(int *arr1,int *arr2,int *ans);
+void mul(int *arr1,int *arr2,int *ans);
+
+int main(){
+    int arr1[BSIZE],arr2[BSIZE],ans[2*BSIZE],cmdi;
+    memset(arr1,0,sizeof(arr1));
+    memset(arr2,0,sizeof(arr2));
+    memset(ans,0,sizeof(ans));
+    void(*func[])(int*,int*,int*) = {add,sub,mul};
+	cmdi = getchar()-'1';
+	getchar();
+    input(arr1);
+	input(arr2);
+    if(jgsize(arr1,arr2)){
+		func[cmdi](arr2,arr1,ans);
+		if(cmdi==1)printf("-");
+	}
+	else{
+		func[cmdi](arr1,arr2,ans);
+	}
+	print(ans);
+
+    return 0;
+}
 void input(int *arr){
     char t[BSIZE];
     int i;
@@ -65,26 +93,6 @@ int jgsize(int *arr1,int *arr2){
 		j--;
 	}
 	return 0;
-}
-int main(){
-    int arr1[BSIZE],arr2[BSIZE],ans[2*BSIZE],cmdi;
-    memset(arr1,0,sizeof(arr1));
-    memset(arr2,0,sizeof(arr2));
-    memset(ans,0,sizeof(ans));
-    void(*func[])(int*,int*,int*) = {add,sub,mul};
-	cmdi = getchar()-'1';
-	getchar();
-    input(arr1);
-	input(arr2);
-    if(jgsize(arr1,arr2)){
-		func[cmdi](arr2,arr1,ans);
-		if(cmdi==1)printf("-");
-	}
-	else{
-		func[cmdi](arr1,arr2,ans);
-	}
-	print(ans);
-    return 0;
 }
 
 
