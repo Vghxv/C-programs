@@ -10,11 +10,10 @@ void merge(int *a,int front, int mid,int end){
 	R = malloc(n2*sizeof(int));
 	for(k=0;k<n1;k++)L[k] = a[front+k];
 	for(k=0;k<n2;k++)R[k] = a[mid+1+k];
-	
 	//for(i=0;i<5;i++)printf("%d",a[i]);
 	i=0;
 	j=0;
-	k=front;
+	k=0;
 	while(i<n1&&j<n2){
 		if(L[i]<R[j]) a[k++] = L[i++];
 		else a[k++] = R[j++];
