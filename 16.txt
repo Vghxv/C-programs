@@ -8,8 +8,8 @@
 輸出除法運算後的商數(測資不一定皆可整除)
 =================
 範例輸入說明：
-1000000000000000000000005 (被除數)
-10000000000000000000 (除數)
+1000000000000000000000005
+10000000000000000000
 
 範例輸出說明：
 100000 (餘5但僅需輸出商數)
@@ -139,3 +139,60 @@ sample input 18：
 
 sample output 18：
 29790
+
+void div(int *arr1,int *arr2,int *ans){
+	int i,j;
+	int tenpower[BSIZE];
+    int temp[BSIZE];
+    int t[BSIZE];
+	memset(tenpower,0,BSIZE*sizeof(int));
+	for(i=BSIZE/2;i>-1;i--){
+		for(j=9;j>-1;j--){
+			memset(t,0,BSIZE*sizeof(int));
+			memset(temp,0,BSIZE*sizeof(int));
+			t[0]=j;
+			tenpower[i]=1;
+
+			mul(arr2,t,temp);
+			memset(t,0,BSIZE*sizeof(int));
+			mul(tenpower,temp,t);
+
+			tenpower[i]=0;
+			if(j==0){
+				ans[i]=0;
+			}
+			else if(jgsize(arr1,t)<=0){
+				sub(arr1,t,arr1);
+				ans[i]=j;
+				break;
+			}
+		}
+	}
+}
+void div(int *a,int *b,int *c){
+	int i,j;
+	int tem[BSIZE];
+	memset(tem,0,BSIZE*sizeof(int));
+	for(i=40;i>=0;i--){
+		for(j=9;j>=0;j--){
+			int tem2[BSIZE];
+			memset(tem2,0,BSIZE*sizeof(int));
+			int tem3[BSIZE];
+			memset(tem3,0,BSIZE*sizeof(int));
+			tem2[0]=j;
+			tem[i]=1;
+			mul(b,tem2,tem3);
+			memset(tem2,0,BSIZE*sizeof(int));
+			mul(tem,tem3,tem2);
+			tem[i]=0;
+			if(j==0){
+				c[i]=0;
+			}
+			else if(jgsize(a,tem2)<=0){
+				sub(a,tem2,a);
+				c[i]=j;
+				break;
+			}
+		}
+	}
+}

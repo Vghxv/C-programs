@@ -1,37 +1,52 @@
 #include<stdio.h>
 #include<string.h>
 #define BSIZE 100
-void input(int *arr);
-void print(int *arr);
-int jgsize(int *arr1,int *arr2);
-void add(int *arr1,int *arr2,int *ans);
-void sub(int *arr1,int *arr2,int *ans);
-void mul(int *arr1,int *arr2,int *ans);
-void get_dividend(int *arr,int *devidend,int i,int j);
-void div(int *arr1,int *arr2,int *ans);
-int main(){
-    int arr1[BSIZE],arr2[BSIZE],ans[2*BSIZE];
-    memset(arr1,0,sizeof(arr1));
-    memset(arr2,0,sizeof(arr2));
-    memset(ans,0,sizeof(ans));
-    input(arr1);
-	input(arr2);
-	div(arr1,arr2,ans);
-	//print(ans);
+void div(int *arr1,const int *arr2,int *ans){
+	int i,j;
+	int tenpower[BSIZE];
+    int temp[BSIZE];
+    int t[BSIZE];
+	memset(tenpower,0,BSIZE*sizeof(int));
+	for(i=BSIZE/2-1;i>-1;i--){
+		for(j=9;j>-1;j--){
+			memset(t,0,BSIZE*sizeof(int));
+			memset(temp,0,BSIZE*sizeof(int));
+			t[0]=j;
+			tenpower[i]=1;
+			mul(arr2,t,temp);
+			memset(t,0,BSIZE*sizeof(int));
+			mul(tenpower,temp,t);
+			tenpower[i]=0;
+			if(j==0){
+				ans[i]=0;
+			}
+			else if(jgsize(arr1,t)<=0){
+				sub(arr1,t,arr1);
+				ans[i]=j;
+				break;
+			}
+		}
+	}
+}
+void mul(int *arr1,int *arr2,int *ans){
+    int i,j;
+    int carry=0,tmp;
+	for(i=0;i<BSIZE/2;i++){
+		for(j=0;j<BSIZE/2;j++){
+			tmp = arr1[i]*arr2[j]+ans[i+j]+carry;
+			carry = tmp/10;
+            ans[i+j] = tmp%10;
+        }
+	}
+}
+int jgsize(int *arr1,int *arr2){
+    int i;
+    for(i=BSIZE-1;i>=0;i--){
+        if(arr1[i]>arr2[i])return -1;
+        else if(arr1[i]<arr2[i])return 1;
+    }
     return 0;
 }
-void div(int *arr1,int *arr2,int *ans){
-	int dividend[BSIZE];
-    int i=BSIZE-1,j=BSIZE-1;
-	memset(dividend,0,sizeof(dividend));
-    while(arr1[i]==0)i--;i++;
-    while(arr2[j]==0)j--;j++;
-    get_dividend(arr1,dividend,i-j,i);
-
-//    print(dividend);
-
-}
-
 void input(int *arr){
     char t[BSIZE];
     int i;
@@ -49,7 +64,6 @@ void print(int *arr){
 		}
 	}
     while(i>-1)printf("%d",*(arr+i--));
-    printf("\n");
 }
 void add(int *arr1,int *arr2,int *ans){
     int i,tmp;
@@ -73,33 +87,14 @@ void sub(int *arr1,int *arr2,int *ans){
 		}
     }
 }
-void mul(int *arr1,int *arr2,int *ans){
-    int i,j;
-    int carry=0,tmp;
-	for(i=0;i<BSIZE;i++){
-        carry=0;
-		for(j=0;j<BSIZE;j++){
-			tmp = arr1[i]*arr2[j]+ans[i+j]+carry;
-			carry = tmp/10;
-            ans[i+j] = tmp%10;
-        }
-	}
+int main(){
+    int arr1[BSIZE],arr2[BSIZE],ans[2*BSIZE];
+    memset(arr1,0,sizeof(arr1));
+    memset(arr2,0,sizeof(arr2));
+    memset(ans,0,sizeof(ans));
+    input(arr1);
+	input(arr2);
+	div(arr1,arr2,ans);
+	print(ans);
+    return 0;
 }
-int jgsize(int *arr1,int *arr2){
-	int i=BSIZE-1,j=BSIZE-1;
-	while(arr1[i]==0)i--;
-	while(arr2[j]==0)j--;
-	if(i<j)return 1;
-	while(i==j&&i>-1){
-		if(arr1[i]<arr2[j])return 1;
-		i--;
-		j--;
-	}
-	return 0;
-}
-void get_dividend(int *arr,int *devidend,int i,int j){
-    int k1=0,k2=i;
-    while(k2<j)devidend[k1++]=arr[k2++];
-}
-
-
