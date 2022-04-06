@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#define BS 50
 void merge(int *a,int front, int mid,int end){
 	int *L,*R,i,j,k=0;
 	int n1 = mid - front + 1;
@@ -10,8 +9,6 @@ void merge(int *a,int front, int mid,int end){
 	R = malloc(n2*sizeof(int));
 	for(k=0;k<n1;k++)L[k] = a[front+k];
 	for(k=0;k<n2;k++)R[k] = a[mid+1+k];
-	
-	//for(i=0;i<5;i++)printf("%d",a[i]);
 	i=0;
 	j=0;
 	k=front;
