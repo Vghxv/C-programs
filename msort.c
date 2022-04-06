@@ -21,7 +21,8 @@ void merge(int *a,int front, int mid,int end){
 	}
 	while(i<n1) a[k++] = L[i++];
 	while(j<n2) a[k++] = R[j++];
-	
+	free(L);
+	free(R);
 }
 void msort(int *a,int front,int end){
 	if(front<end){
