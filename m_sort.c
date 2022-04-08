@@ -37,6 +37,5 @@ int main(){
 	//merge(a,0,4,9);
 	msort(a,0,9);
 	for(i=0;i<10;i++)printf("%d ",*(a+i));
-	
 	return 0;
 }
