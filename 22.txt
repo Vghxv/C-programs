@@ -1,0 +1,234 @@
+22. 英文字取代、插入、刪除、分析
+
+輸入一篇英文文章 A，文章中英文字以一個空白間隔。另外輸入 2 個英文字(word) P、Q。
+然後執行下面四種操作：
+(1) 將文章 A 中 P 字串以 Q 字串取代，並輸出。
+(2) 在文章 A 中 P 字串前插入 Q 字串，並輸出。
+(3) 將文章 A 中 P 字串刪除，並輸出。
+(4) 分析文章 A 所有英文字 (word) 的頻率，依頻率由大自小排序，頻率相同則以 word由小自大排序輸出。
+
+備註:
+word是區分大小寫的，如 "The"跟”the”是兩個不同的word。
+
+word排序規則
+1. 長度短的在前
+2. 如果長度一樣，則依照ASCII編碼排序，編碼小的在前
+如:
+a → is、That → that 、as → bot、That → This
+a → as → is → bot → That → This → that
+
+----------------
+輸入說明 :
+第一行，文章 A
+第二行，英文字 P
+第三行，英文字 Q
+
+文章A只會出現大小寫英文字母與空白
+英文字P、Q只會出現大小寫英文字母
+----------------
+輸出說明 :
+第一行，輸出將文章 A 中的 P 字串以 Q 字串取代之結果
+第二行，輸出在文章 A 中的 P 字串前插入 Q 字串之結果
+第三行，輸出將文章 A 中的 P 字串刪除之結果
+第四行，輸出文章A中，所有英文字(word)以及出現的頻率，中間以空格做間隔。
+輸出順序依頻率由大自小排序，若頻率相同，則以word由小自大排序。
+
+=================
+範例輸入說明：
+This is a book That is a cook (文章A)
+is (word P)
+was (word Q)
+
+範例輸出說明：
+This was a book That was a cook (用was取代is)
+This was is a book That was is a cook (在is前面插入was)
+This a book That a cook (刪除is)
+a 2 (a 出現2次，且a長度比is小，所以a在is前面)
+is 2 (is 出現2次，出現次數比That、This、book、cook多)
+That 1 (That出現1次，且That中a的ASCII較This中的i的ASCII小，所以That在This前面)
+This 1 (This出現1次，且T的ASCII較b的ASCII小，所以This在book前面)
+book 1 (book出現1次，且book中b的ASCII較cook中的c的ASCII小，所以book在cook前面)
+cook 1
+=================
+
+Sample Input 1:
+This is a book That is a cook
+is
+was
+
+Sample Output 1:
+This was a book That was a cook
+This was is a book That was is a cook
+This a book That a cook
+a 2
+is 2
+That 1
+This 1
+book 1
+cook 1
+
+---------------------
+
+Sample Input 2:
+This is a pen That is a banana
+apple
+banana
+
+Sample Output 2:
+This is a pen That is a banana
+This is a pen That is a banana
+This is a pen That is a banana
+a 2
+is 2
+pen 1
+That 1
+This 1
+banana 1
+
+---------------------
+
+Sample Input 3:
+The book is so funny
+book
+comic
+
+Sample Output 3:
+The comic is so funny
+The comic book is so funny
+The is so funny
+is 1
+so 1
+The 1
+book 1
+funny 1
+
+---------------------
+
+Sample Input 4:
+The book is so funny and the comic is so funny too
+funny
+boring
+
+Sample Output 4:
+The book is so boring and the comic is so boring too
+The book is so boring funny and the comic is so boring funny too
+The book is so and the comic is so too
+is 2
+so 2
+funny 2
+The 1
+and 1
+the 1
+too 1
+book 1
+comic 1
+
+---------------------
+
+Sample Input 5:
+Do you do do you a something do nothing
+do
+can
+
+Sample Output 5:
+Do you can can you a something can nothing
+Do you can do can do you a something can do nothing
+Do you you a something nothing
+do 3
+you 2
+a 1
+Do 1
+nothing 1
+something 1
+
+---------------------
+
+Sample Input 6:
+to be or not to be
+to
+do
+
+Sample Output 6:
+do be or not do be
+do to be or not do to be
+be or not be
+be 2
+to 2
+or 1
+not 1
+
+---------------------
+
+Sample Input 7:
+to be or not to be
+be
+apple
+
+Sample Output 7:
+to apple or not to apple
+to apple be or not to apple be
+to or not to
+be 2
+to 2
+or 1
+not 1
+
+---------------------
+
+Sample Input 8:
+banana banana yellow ban banana
+banana
+banana
+
+Sample Output 8:
+banana banana yellow ban banana
+banana banana banana banana yellow ban banana banana
+yellow ban
+banana 3
+ban 1
+yellow 1
+
+---------------------
+
+Sample Input 9:
+apple apple apple apple apple
+apple
+apple
+
+Sample Output 9:
+apple apple apple apple apple
+apple apple apple apple apple apple apple apple apple apple
+
+apple 5
+
+---------------------
+
+Sample Input 10:
+Vestibulum fermentum nulla ex eget ipsum eu ex ultricies placerat Sed sed ex vel erat eleifend euismoexd exu ext est
+ex
+exe
+
+Sample Output 10:
+Vestibulum fermentum nulla exe eget ipsum eu exe ultricies placerat Sed sed exe vel erat eleifend euismoexd exu ext est
+Vestibulum fermentum nulla exe ex eget ipsum eu exe ex ultricies placerat Sed sed exe ex vel erat eleifend euismoexd exu ext est
+Vestibulum fermentum nulla eget ipsum eu ultricies placerat Sed sed vel erat eleifend euismoexd exu ext est
+ex 3
+eu 1
+Sed 1
+est 1
+ext 1
+exu 1
+sed 1
+vel 1
+eget 1
+erat 1
+ipsum 1
+nulla 1
+eleifend 1
+placerat 1
+euismoexd 1
+fermentum 1
+ultricies 1
+Vestibulum 1
+
+---------------------
