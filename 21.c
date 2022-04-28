@@ -1,20 +1,32 @@
 #include<stdio.h>
 #include<string.h>
-int __strcmp(char *a,char *b){
-	for(;(*a!=0)&&(*b!=0);){
-		if(*a>*b)return 1;
-		else if(*b>*a)return -1;
-		a++;b++;
-	}
-	
-	return 0;
-}
+#include<stdlib.h>
+#define Bs 20
 int main(){
-	char s1[50],s2[50];
-	memset(s1,0,sizeof(s1));
-	memset(s2,0,sizeof(s2));
-	scanf("%s",s1);
-	scanf("%s",s2);
-	printf("%d",__strcmp(s1,s2));
+	char str[Bs];
+	char *token;
+	char a[]="123a456s789d";
+	char b[]="qwert";
+	memset(str,0,sizeof(str));
+	// gets(str);
+	int n,i,j;
+	scanf("%d%*c",&n);
+	char (*mem)[Bs]=(char(*)[Bs])malloc(n*Bs*sizeof(char));	
+	for(i=0;i<n;i++)memset(mem[i],'0',sizeof(mem[i]));
+	strncpy(*mem,a,Bs);
+	// for(i=0;i<n;i++){
+		// for(j=0;j<Bs;j++){
+			// printf("%d ",mem[i][j]);
+		// }
+		// puts("");
+	// }
+	
+	// printf("%s",*mem);
+	// token=strtok(str," ");
+	// while(token!=NULL){
+		// // printf("%s\n",token);
+		// token=strtok(NULL," ");
+	// }
+	free(mem);
 	return 0;
 }
