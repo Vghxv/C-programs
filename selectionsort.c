@@ -9,7 +9,8 @@ void swap(int *a,int *b){
 }
 void selsort(int *arr,int size){
 	int i,j;
-	int max = 0,index;
+	int index;
+	int max = 0;
 	i = size;
 	while(i>0){
 		max = 0;

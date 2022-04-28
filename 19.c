@@ -1,11 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#define whywouldIscanfstrandmemsetstr re
-void whywouldIscanfstrandmemsetstr(char *ans,char *str,int *stri,int n,int shift,int str_l,int nowx,int nowy){
-	if(*stri==str_l){
-		return;
-	}
+#define whywouldIscanfstrAndmemsetstr re
+void whywouldIscanfstrAndmemsetstr(char *ans,char *str,int *stri,int n,int shift,int str_l,int nowx,int nowy){
+	if(*stri==str_l)return;
 	if(str[*stri]==50){
 		(*stri)+=1;
 		re(ans,str,stri,n,shift/2,str_l,nowx,nowy);
@@ -34,7 +32,7 @@ int main(){
 	str_l = strlen(str);
 	ans = malloc(n*n*sizeof(char));
 	memset(ans,'0',n*n*sizeof(char));
-	whywouldIscanfstrandmemsetstr(ans,str,&stri,n,n,str_l,nowx,nowy);
+	whywouldIscanfstrAndmemsetstr(ans,str,&stri,n,n,str_l,nowx,nowy);
 	int i;
 	int jg=1;
 	for(i=0;i<n*n;i++){

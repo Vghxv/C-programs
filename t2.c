@@ -2,10 +2,10 @@
 #include<math.h>
 #include<string.h>
 int main(){
-	// int i = pow(2,5);
-	char a[50];
-	scanf("%s",a);
-	printf("%d",strlen(a));
+	int i,j,k,l;
+	scanf("%d %*c %d %*c",&i,&j);
+	scanf("%d %*c %d %*c",&k,&l);
+	printf("%d %d %d %d",i,j,k,l)
 	return 0;
 }
 

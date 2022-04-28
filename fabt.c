@@ -2,10 +2,10 @@
 #include<stdlib.h>
 #include<string.h>
 
-int f(int *arr,int n)return(!arr[n]&&n>1)?f(arr,n-1)+f(arr,n-2):arr[n];
+// int f(int *arr,int n)return(!arr[n]&&n>1)?f(arr,n-1)+f(arr,n-2):arr[n];
 int f(int *arr,int n){
-	if(!arr[n]&&n>1){
-		return f(arr,n-1)+f(arr,n-2);
+	if(!arr[n]){
+		arr[n]=f(arr,n-1)+f(arr,n-2);
 	}
 	return arr[n];
 }
