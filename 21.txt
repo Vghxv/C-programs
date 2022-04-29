@@ -17,8 +17,8 @@
 
 =================
 範例輸入說明：
-happy birthday to you (字串S)
-4 (接下來會輸入n個字串)
+happy birthday to you
+4
 happy to you
 birthday birthday
 to you
@@ -28,10 +28,15 @@ happy birthday
 2
 
 happy to you 跟 birthday birthday 是互補字串 (S1跟S2的字沒有重複，且S內的字恰好都被S1, S2所包含)
+
 happy to you 跟 to you 不是互補字串 (to you 重複)
+
 happy to you 跟 happy birthday 不是互補字串 (happy重複)
+
 birthday birthday 跟 to you 不是互補字串 (S1跟S2的字雖然沒重複，但S中的happy沒有在S1或S2中)
+
 birthday birthday 跟 happy birthday 不是互補字串 (birthday重複)
+
 to you 跟 happy birthday 是互補字串 (S1跟S2的字沒有重複，且S內的字恰好都被S1, S2所包含)
 有兩個互補字串，因此輸出2
 =================
