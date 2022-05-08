@@ -5,7 +5,6 @@ char values[][20] = { "This", "is", "a", "book", "That","is","a","cook"};
 
 int cmpfunc (const void * a, const void * b){ 
 	return strncmp( (char*)a , (char*)b,20 ); 
-
 }
 
 

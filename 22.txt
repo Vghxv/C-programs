@@ -35,9 +35,9 @@ a → as → is → bot → That → This → that
 
 =================
 範例輸入說明：
-This is a book That is a cook (文章A)
-is (word P)
-was (word Q)
+This is a book That is a cook
+is
+was
 
 範例輸出說明：
 This was a book That was a cook (用was取代is)
