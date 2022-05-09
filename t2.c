@@ -1,11 +1,19 @@
 #include<stdio.h>
-#include<math.h>
 #include<string.h>
 int main(){
-	int i,j,k,l;
-	scanf("%d %*c %d %*c",&i,&j);
-	scanf("%d %*c %d %*c",&k,&l);
-	printf("%d %d %d %d",i,j,k,l)
+	char a[50];
+	char b[50];
+	char *toka;
+	char *tokv;
+	toka=strtok(a," ");
+	while(toka!=NULL){
+		tokb=strtok(b," ");
+		while(tokb!=NULL){
+			//sth
+			tokb=strtok(NULL," ");
+		}
+		toka=strtok(NULL," ");
+	}
 	return 0;
 }
 
