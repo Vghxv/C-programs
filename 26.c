@@ -1,43 +1,44 @@
 #include<stdio.h>
 #include<math.h>
-double f1(double a,int x){
-	return sqrt(a-x*x);
+double f1(double a,double x){
+	return sqrt(fabs(a-pow(x,2)));
 }
-double f2(double a,int x){
-	return (a*x*x*x + 7.0L*x)/sqrt(a+x);
+double f2(double a,double x){
+	return (a*pow(x,3) + 7.0L*x)/sqrt(fabs(a+x));
 }
-double fA(int n,double a,double p,double q,double(*f)(double,int)){
+double integral(int n,double a,double p, double q,double (*f)(double,double)) {
 	int i;
-	double gap=(q-p)/n;
-	double fres1=fabs((*f)(a,p));
-	double fres2=fabs((*f)(a,p+gap));
-	double area=0;
-	for(i=0;i<n;i++){
-		area+=(fres1+fres2)*gap/2.0L;
-		fres1=fres2;
-		fres2=(*f)(a,p+gap*(i+1));
+	double area = (fabs(((*f)(a,p)) + fabs((*f)(a,q)))) / 2.0L;
+	double gap = (q - p) / n;
+	double next = p;
+	for (i = 1; i < n; i++) {
+		area += fabs((*f)(a,next+=gap));
 	}
-	return area;
+	return area * gap;
 }
 int main(){
-	int jg,err,n=1;
+	
+	int jg,err,n;
 	double a,p,q;
-	double(*f)(double,int);
-	scanf("%d%lf%lf%lf%d",&jg,&a,&p,&q,&err);
-	err*=-1;
-	f=(jg==1)?f1:f2;
-	double errn=pow(10,err);
-	double parea=0;
-	double narea=0;
-	int debug=0;
-	while(debug<14){
-		printf("%d\n",debug);
-		narea=fA(n,a,p,q,f);
-		if(fabs(narea-parea)<errn)break;
-		parea=narea;
-		n*=2;
-		debug++;
-	printf("%.12f",narea);
+	double(*f)(double,double);
+	while(1){
+		scanf("%d",&jg);
+		if(jg==0)break;
+		scanf("%lf%lf%lf%d",&a,&p,&q,&err);
+		n=1;
+		err*=-1;
+		f=(jg==1)?f1:f2;
+		double errn=pow(10,err);
+		double parea=0.0L;
+		double narea=0.0L;
+		while(1){
+			narea=integral(n,a,p,q,f);
+			if(fabs(narea-parea)<errn)break;
+			parea=narea;
+			// printf("%.12f n:%d\n",narea,n);
+			n=n*2;
+		}
+		printf("%.12f\n",narea);
 	}
 	return 0;
 }

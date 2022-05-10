@@ -80,7 +80,7 @@ int main(){
 	}
 	qsort(st,N,sizeof(student),cmp);
 	for(i=0;i<3;i++){
-		printf("%s\n%.0f\n",st[i].ID,st[i].score);
+		printf("%s\n%d\n",st[i].ID,(int)(st[i].score+0.5));
 	}
 	return 0;
 }
