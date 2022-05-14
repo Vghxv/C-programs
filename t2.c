@@ -1,30 +1,17 @@
 #include<stdio.h>
 #include<string.h>
+typedef struct p_t{
+	char name[50];
+	int age;
+};
 int main(){
-	char a[50];
-	char b[50];
-	char *toka;
-	char *tokv;
-	toka=strtok(a," ");
-	while(toka!=NULL){
-		tokb=strtok(b," ");
-		while(tokb!=NULL){
-			//sth
-			tokb=strtok(NULL," ");
-		}
-		toka=strtok(NULL," ");
-	}
+	p_t a;
+	p_t b;
+	scanf("%s",a.name);
+	scanf("%s",b.name);
+	scanf("%d%d",&a.age,&b.age);
+	printf("%d",(a.age>b.age)?a.age:b.age);
 	return 0;
 }
 
 
-// x[0]=x[0]+1
-// x is $s1
-
-
-
-// try:
-// ll $t0,($s1)
-// addi $t0,$t0,1
-// sc $t0,($s1)
-// beq $t0,$0,try

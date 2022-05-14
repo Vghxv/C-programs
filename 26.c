@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<math.h>
 double f1(double a,double x){
-	return fabs(sqrt(fabs(a-pow(x,2))));
+	return fabs(sqrt(fabs(a-x*x)));
 }
 double f2(double a,double x){
 	return fabs((a*x*x*x + 7.0L*x)/sqrt(fabs(a+x)));
@@ -13,7 +13,7 @@ double integral(int n,double a,double p, double q,double (*f)(double,double)) {
 	double next = p;
 	for (i = 1; i < n; i++) {
 		next+=gap;
-		area += fabs((*f)(a,next));
+		area += (*f)(a,next);
 	}
 	return area * gap;
 }
