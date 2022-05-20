@@ -1,0 +1,129 @@
+31 - 邏輯電路圖
+* 本題必須使用題目所附之程式碼架構
+(參考規定架構進行實作並通過所有測資才予以給分，期末會進行檢查)
+
+　　　　　　　 O1
+I1 ----->A　　 ↑
+　　　 A------------>B---★----D　O2
+I2 ----->A　|　　　　　 D ↑
+　　　　　--------->C 　 D---★—>F　　O3
+　　　　　　　　 C------->D　　　 F　　↑
+I3 --------------------->C　|　 　　 F-----★
+　　　　　　　　　　 --->E　　　 F
+I4-------------------------------->E--------->F
+
+可參考以下連結
+https://imgur.com/tjSpV6Q
+
+以上邏輯電路圖，
+輸入為 I1, I2, I3, I4，以及設定A、B、C、D、E、F六個邏輯閘。
+輸出為 O1, O2, O3
+
+A、B、C、D、E、F可被設定成5種邏輯閘，分別是
+雙輸入單輸出的AND, OR與XOR
+以及
+單輸入單輸出的NOT 與 Empty。
+
+如上圖所示，
+B邏輯閘為單輸入單輸出邏輯閘，因此可被設定成 NOT 或 Empty。
+A, C, D, E, F邏輯閘為雙輸入單輸出邏輯閘，因此可被設定成 AND, OR 與 XOR。
+
+------程式碼架構規範之範例---------------------
+
+#include
+#include
+#define GATEVALUE(TYPE) int(*GateValue)(void)
+typedef struct _Gate{
+GATEVALUE();
+}Gate;
+int GateGetValue(){return 0;}
+typedef struct _GateAnd{
+GATEVALUE();
+}GateAnd;
+int GateAndValue(){return 1;}
+void CreateGate(Gate *obj){
+obj->GateValue = GateGetValue;
+}
+void CreateGateAND(GateAnd *obj){
+obj->GateValue = GateAndValue;
+}
+int main(int argc, char *argv[]){
+Gate gate;
+CreateGate(&gate);
+GateAnd and;
+CreateGateAND(&and);
+printf("Gate = %d, GateAND = %d\n", gate.GateValue(), and.GateValue());
+return 0;
+}
+
+此範例可以參考上課講義page.451
+-------------------------------------------------------
+
+輸入說明:
+第一行依序輸入I1, I2, I3, I4為 0 或 1，中間以逗號間隔。
+第二行依序輸入A, B, C, D, E, F邏輯閘的設定，可輸入的邏輯閘種類代號如下所示：
+A：AND Gate
+O：OR Gate
+X：XOR Gate
+N：NOT Gate
+E：Empty Gate
+
+輸出說明:
+輸出O1, O2, O3為 0 或 1，中間以逗號間隔
+輸出順序：O1,O2,O3
+
+-------------------------------------------------------
+
+範例輸入1 說明:
+0,0,0,0 (i1, i2, i3, i4皆為0)
+X,N,O,X,A,A (A邏輯閘為XOR，B邏輯閘為NOT，C邏輯閘為OR，D邏輯閘為XOR，E、F邏輯閘為AND)
+
+範例輸出1 說明:
+1,1,0 (O1為1，O2為1，O3為0)
+
+可參考以下連結
+https://imgur.com/0WyggUE
+-------------------------------------------------------
+
+Sample Input 1:
+0,0,0,0
+X,N,O,X,A,A
+
+Sample Output 1:
+1,1,0
+
+-------------------------------------------------------
+
+Sample Input 2:
+1,0,1,1
+A,E,A,A,X,O
+
+Sample Output 2:
+0,0,1
+
+-------------------------------------------------------
+
+Sample Input 3:
+0,0,1,0
+X,N,A,O,X,X
+
+Sample Output 3:
+1,1,1
+
+-------------------------------------------------------
+
+Sample Input 4:
+0,0,1,1
+O,E,X,O,O,A
+
+Sample Output 4:
+0,1,1
+
+-------------------------------------------------------
+
+Sample Input 5:
+1,0,0,1
+X,N,X,X,A,X
+
+Sample Output 5:
+0,1,0

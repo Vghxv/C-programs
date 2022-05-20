@@ -1,10 +1,12 @@
 #include<stdio.h>
 #include<stdlib.h>
 int main(){
-	int *a;
-	a=malloc(sizeof(int)*0);
-	printf("%d\n",sizeof(a));
-	printf("%d",*a);
-	if(a==NULL)printf("sss");
+	char p[50];
+	gets(p);
+	int i;
+	for(i=0;i<50;i++){
+		printf("%d ",p[i]);
+	}
+	// printf("%s",p);
 	return 0;
 }
