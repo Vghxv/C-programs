@@ -63,7 +63,6 @@ void f(worklist_t *wl,int *tl,int N,int M,int *pindex){
 			if(pindex[i] < wl[i].pron){
 				t1=tl[wl[i].process[pindex[i]].m_i];
 				t2=wl[i].preh;
-				// printf("%d,%d\n",t1,t2);
 				tmax=max(t1,t2)+wl[i].process[pindex[i]].h;
 			}
 			else continue;
@@ -77,14 +76,6 @@ void f(worklist_t *wl,int *tl,int N,int M,int *pindex){
 		int finmax = max(tl[nextps->m_i],preh)+(nextps->h);
 		wl[tindex].preh = finmax;
 		tl[nextps->m_i] = finmax;
-		// printf("index:%d preh:%d process:(%d,%d)\n",tindex,preh,nextps->m_i,nextps->h);
-		// printarr(tl,N);
-		// printarr(pindex,M);
-		// int q;
-		// for(q=0;q<M;q++){
-			// printf("%d ",wl[q].preh);
-		// }
-		// puts("");
 	}
 }
 int main(){
@@ -98,10 +89,7 @@ int main(){
 	initwl(&wl,M);
 	initarr(&tl,N);
 	initarr(&pindex,M);
-	
 	inputwl(wl,M);
-	
-	// dewl(wl,M);
 	f(wl,tl,N,M,pindex);
 	for(i=0;i<M;i++)ans+=wl[i].preh;
 	printf("%d",ans);
