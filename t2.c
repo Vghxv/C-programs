@@ -13,5 +13,16 @@ int main(){
 	printf("%d",(a.age>b.age)?a.age:b.age);
 	return 0;
 }
-
-
+	
+	// while(p!=NULL&&p->score!=score)p=p->next;
+	// strcpy(name,p->name);
+	// return name;
+// int main{
+	// nodep_t p=NULL;
+	// insertFromFront(&p,5);
+	// insertFromFront(&p,3);
+	// insertFromBack(&p,8);
+	// insertFromBack(&p,7);
+	// printList(p);
+	// return 0;
+// }
