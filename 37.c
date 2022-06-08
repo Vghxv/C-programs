@@ -71,17 +71,17 @@ int main(){
 			sign=-1;
 		}
 		else if(buff[i]==32||buff[i]==10){
-			// printf("%d ",num*sign);
-			enqueue(&(E1->head),&(E1->tail),num*sign);			
+			printf("%d ",num*sign);
+			enqueue(&(E1->head),&(E1->tail),num*sign);
 			num=0;
 			sign=1;
 		}
 		else{
-			num=num*10+buff[i]-32;
+			num=num*10+buff[i]-48;
 		}
 	}
 	// puts("");
-	printlistnode(E1->head);
+	// printlistnode(E1->head);
 	
 	return 0 ;
 }
