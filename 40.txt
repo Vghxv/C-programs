@@ -1,0 +1,160 @@
+40 - 建構唯一二元樹
+*此題須使用Link List實作，否則不予計分。
+*請勿使用全域變數
+(須符合上述兩項規定並通過所有測資才予以給分，期末會進行檢查)
+
+題目給定前序或後序以及中序，請建構唯一的Binary Tree。
+輸出Tree的內容，輸出順序為由上而下，由左而右印出。
+
+前序代號：P
+中序代號：I
+後序代號：O
+
+--------------------------------------------------------
+
+輸入說明:
+輸入共四行
+第一行 輸入前序、中序或後序代號。
+第二行 輸入上一行輸入種類尋訪的結果，皆為大寫英文字母。
+第三行 輸入前序、中序或後序代號。
+第四行 輸入上一行輸入種類尋訪的結果，皆為大寫英文字母。
+
+輸出說明
+輸出唯一二元樹的內容，輸出順序為由上而下，由左而右。
+
+--------------------------------------------------------
+
+範例輸入1 說明
+P (代表下一行要輸入唯一二元樹的前序走訪)
+ABCDEFGHI (唯一二元樹的前序走訪結果)
+I (代表下一行要輸入唯一二元樹的中序走訪)
+BCAEDGHFI (唯一二元樹的中序走訪結果)
+
+範例輸出1 說明
+ABDCEFGIH (唯一二元樹由上而下，由左而右的輸出結果)
+
+範例測資1畫出來的二元樹: https://ppt.cc/fr1eEx
+
+
+範例輸入3 說明
+I (代表下一行要輸入唯一二元樹的中序走訪)
+EFDAGHCB (唯一二元樹的中序走訪結果)
+O (代表下一行要輸入唯一二元樹的後序走訪)
+FEDHGCBA (唯一二元樹的後序走訪結果)
+
+範例輸出3 說明
+ADBECFGH (唯一二元樹由上而下，由左而右的輸出結果)
+
+範例測資3畫出來的二元樹: https://ppt.cc/fI3v7x
+
+--------------------------------------------------------
+
+Sample Input 1:
+P
+ABCDEFGHI
+I
+BCAEDGHFI
+
+
+Sample Output 1:
+ABDCEFGIH
+
+--------------------------------------------------------
+
+Sample Input 2：
+O
+CBEHGIFDA
+I
+BCAEDGHFI
+
+Sample Output 2：
+ABDCEFGIH
+
+--------------------------------------------------------
+
+Sample Input 3：
+I
+EFDAGHCB
+O
+FEDHGCBA
+
+Sample Output 3：
+ADBECFGH
+
+--------------------------------------------------------
+
+Sample Input 4：
+O
+GIFHBEDCA
+I
+GFIBHDEAC
+
+Sample Output 4：
+ADCBEFHGI
+
+--------------------------------------------------------
+
+Sample Input 5：
+P
+ABDFIHEGC
+I
+BAFHEIDGC
+
+Sample Output 5：
+ABDFGICHE
+
+--------------------------------------------------------
+
+Sample Input 6：
+P
+ABCDEFG
+I
+GFEDCBA
+
+Sample Output 6：
+ABCDEFG
+
+--------------------------------------------------------
+
+Sample Input 7：
+O
+GFEDCBA
+I
+ABCDEFG
+
+Sample Output 7：
+ABCDEFG
+
+--------------------------------------------------------
+
+Sample Input 8：
+O
+IHGFEDCBA
+I
+ACEGIHFDB
+
+Sample Output 8：
+ABCDEFGHI
+
+--------------------------------------------------------
+
+Sample Input 9：
+P
+ABCDEFGHIJK
+I
+FEDCBAGHIJK
+
+
+Sample Output 9：
+ABGCHDIEJFK
+
+--------------------------------------------------------
+
+Sample Input 10：
+P
+ABDHIEJKCFLMGNO
+I
+HDIBJEKALFMCNGO
+
+Sample Output 10：
+ABCDEFGHIJKLMNO

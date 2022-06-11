@@ -157,5 +157,7 @@ int main(){
 			break;
 		}
 	}
+	free(head);
+	free(tail);
 	return 0 ;
 }
