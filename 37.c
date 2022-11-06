@@ -114,10 +114,8 @@ void printlistnode(nodep_t head){
 				printf("%dx^%d",head->val,head->power);
 			}
 		}
-		// puts("gggggggggggg");
 		first=0;
 		head=head->next;
-		
 	}
 	puts("");
 }

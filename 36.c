@@ -1,3 +1,28 @@
+// 輸入說明
+// 第一行輸入 n，代表初始Link List有多少個節點
+// 第二行輸入 n 個整數，依序分別為每個節點的值，第一個整數為起始節點，最後一個整數為結束節點
+
+// 接下來有多行，總共有6種操作:
+// 1 x，代表從尾端插入數值為 x 的新節點。
+
+// 2 x y，代表搜尋數值為 x 的節點，並在其之後插入數值為 y 的新節點；
+// 若 x 不在Link List中，則不必插入 y 。
+
+// 3 x，代表刪除數值為 x 的節點；若 x 不在Link List中，則不必刪除任何節點。
+
+// 4 代表 刪除起始節點，須將起始節點的下一個節點做為新的起始節點。
+// 若 Link List 已無節點，則不必刪除任何節點。
+
+// 5 代表 刪除結束節點，須將結束節點的前一個節點做為新的結束節點。
+// 若 Link List 已無節點，則不必刪除任何節點。
+
+// 6 代表 結束程式，並從起始節點到結束節點，依序輸出各個節點的值；
+// 若Link List已無任何節點，則輸出"None any node"。
+
+// 輸出說明
+// 輸出共一行，從起始節點到結束節點，依序輸出各個節點的值；每個數字中間以空格間隔
+// 若Link List已無任何節點，則輸出"None any node"
+
 #include<stdio.h>
 #include<stdlib.h>
 typedef struct node_s{
@@ -89,7 +114,7 @@ void delbyval(nodep_t *head,nodep_t *tail,int x){//3
 		free(tmp);
 	}
 }
-void deque(nodep_t* head,nodep_t* tail){//4
+void dequeue(nodep_t* head,nodep_t* tail){//4
 	if((*head)==NULL&&(*tail)==NULL){
 		return;
 	}
@@ -116,6 +141,49 @@ void deltail(nodep_t *head,nodep_t *tail){//5
 		(*tail)->next=NULL;
 	}
 	free(tmp);
+}
+void swap(nodep_t *head,nodep_t *tail,int x,int y){
+	nodep_t n1 = NULL;
+	nodep_t n2 = NULL; 
+	nodep_t tmp = NULL;
+	nodep_t cur = *head;
+	int p=0;
+	while(cur!=NULL){
+		if (cur->val==x){
+			n1 = cur;
+			p=1;
+		}
+		else if ( cur->val==y){
+			n2 = cur;
+			p=0;
+		}
+		cur=cur->next;
+	}
+	if (n1==NULL || n2==NULL || x==y)return ;
+	if(p){
+		tmp=n1;
+		n1=n2;
+		n2=tmp;
+	}
+	if(n1==*head)*head=n2;
+	else if (n2==*head) *head=n1;
+	if(n1==*tail)*tail=n2;
+	else if (n2==*tail) *tail=n1;
+	tmp=n1->next;
+	n1->next=n2->next;
+	if( n1->next!=NULL)
+		n1->next->prev=n1;
+	n2->next=tmp;
+	if (n2->next!=NULL)
+		n2->next->prev=n2;
+	tmp=n1->prev;
+	n1->prev=n2->prev;
+	if(n1->prev!=NULL)
+		n1->prev->next=n1;
+	n2->prev=tmp;
+	if (n2->prev!=NULL)
+		n2->prev->next=n2;
+	// free(tmp);
 }
 int main(){
 	int L=0;
@@ -147,7 +215,7 @@ int main(){
 			delbyval(&head,&tail,x);
 		}
 		else if(ins==4){
-			deque(&head,&tail);
+			dequeue(&head,&tail);
 		}
 		else if(ins==5){
 			deltail(&head,&tail);
@@ -155,6 +223,11 @@ int main(){
 		else if(ins==6){
 			printlistnode(head);
 			break;
+		}
+		else if(ins==7){
+			int x,y;
+			scanf("%d%d",&x,&y);
+			swap(&head,&tail,x,y);
 		}
 	}
 	free(head);

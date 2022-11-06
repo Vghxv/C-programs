@@ -2,6 +2,15 @@
 #include<stdlib.h>
 #include<string.h>
 #define INF 0x3f3f3f3f
+void de(int**record,int n){
+	int i,j;
+	for(i=0;i<n;i++){
+		for(j=0;j<(1<<n);j++){
+			printf("%d\t",record[i][j]);
+		}
+		puts("");
+	}
+}
 int find_path(int **record,int **data,int start,int end,int n){
 	int i,ans=INF;
 	if(record[start][end]>=0)return record[start][end];
@@ -29,7 +38,8 @@ int main(){
 		}
 		record[i][(1<<n)-1]=data[i][0];
 	}
-	printf("%d",find_path(record,data,0,1,n));
+	printf("%d\n",find_path(record,data,0,1,n));
+	de(record,n);
 	for(i=0;i<n;i++){
 		free(data[i]);
 		free(record[i]);

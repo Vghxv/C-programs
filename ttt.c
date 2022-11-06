@@ -32,7 +32,5 @@ void f(int *a,int c){
 int main() {
 	int c=70;
 	int a=100;
-	// double b=f(a);
-	f(&a,c);
 	printf("%d",a);
 }
